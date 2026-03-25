@@ -14,6 +14,8 @@ test('Verificar que se abre una nueva ventana con el texto correcto', async ({ b
     const newWindow = await browserWindowsPage.clickNewWindowButton();
     const text = await browserWindowsPage.getNewWindowText(newWindow);
     //expect(text).toBe('This is a sample page');
+    
+    //Error insertado intencionadamente para mostrar el error en el reporte AI.
     expect(text).toBe('This is NOT!!! a sample page');
 });
 

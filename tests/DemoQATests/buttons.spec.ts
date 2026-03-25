@@ -16,6 +16,7 @@ test("Prueba de los botones con diferentes tipos de clicks", async ({ buttonsPag
     //Click dinamico
     await buttonsPage.dynamicClick();
     await expect(buttonsPage.dynamicClickMessage)
+    //Error insertado intencionadamente para mostrar el error en el reporte AI.
         .toHaveText(/You have done a --STATIC!!-- click/i);
     //.toHaveText(/You have done a dynamic click/i);
 
