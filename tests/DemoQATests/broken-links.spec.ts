@@ -6,8 +6,9 @@ test.beforeEach(async ({ brokenLinksPage }) => {
 
 
 test('Verificar que la imagen ESTA rota', async ({ page, brokenLinksPage }) => {
-    const img = page.locator(`img[src*="${brokenLinksPage.brokenImageName}"]`);
-    
+   
+    const img = brokenLinksPage.brokenImage;
+
     // Aseguramos que el elemento existe antes de evaluar
     await img.waitFor({ state: 'attached' });
 

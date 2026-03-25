@@ -7,7 +7,7 @@ export class BrokenLinksPage {
     private readonly brokenImageNamePrivate: string;
 
     constructor(private readonly page: Page) {  
-        this.brokenImagePrivate = page.locator(`img[src="/images/${this.brokenImageName}"]`);
+        this.brokenImagePrivate = page.locator(`img[src="/images/Toolsqa_1.jpg"]`);
         this.validLinkPrivate = page.getByRole('link', { name: 'Click Here for Valid Link' })
         this.brokenLinkPrivate = page.getByRole('link', { name: 'Click Here for Broken Link' })
         this.brokenImageNamePrivate = 'Toolsqa_1.jpg';
