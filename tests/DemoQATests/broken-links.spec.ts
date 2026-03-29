@@ -7,15 +7,7 @@ test.beforeEach(async ({ brokenLinksPage }) => {
 
 test('Verificar que la imagen ESTA rota', async ({ page, brokenLinksPage }) => {
    
-    const img = brokenLinksPage.brokenImage;
-
-    // Aseguramos que el elemento existe antes de evaluar
-    await img.waitFor({ state: 'attached' });
-
-    const isImageBroken = await img.evaluate((node: HTMLImageElement) => {
-        // Una imagen rota generalmente tiene un ancho natural de 0
-        return node.naturalWidth === 0;
-    });
+    const isImageBroken = await brokenLinksPage.isImageBroken(brokenLinksPage.brokenImage);
 
     expect(isImageBroken, 'El ancho natural debe ser 0 para una imagen rota').toBe(true);
 });

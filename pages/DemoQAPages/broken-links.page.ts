@@ -29,6 +29,15 @@ export class BrokenLinksPage {
         return await responsePromise;
     }
 
+    async isImageBroken(imageLocator: Locator) {
+        // Aseguramos que el elemento existe antes de evaluar
+        await imageLocator.waitFor({ state: 'attached' });
+        return await imageLocator.evaluate((node: HTMLImageElement) => {
+            // Una imagen rota generalmente tiene un ancho natural de 0
+            return node.naturalWidth === 0;
+        });
+    }
+
     get brokenImage() {
         return this.brokenImagePrivate;
     }
