@@ -1,4 +1,5 @@
 import { expect, Locator, Page } from "@playwright/test";
+import path from "path";
 
 export interface FormData {
     firstName: string;
@@ -42,17 +43,11 @@ export class FormPage {
     async fillForm( data: FormData  ) {
 
         await this.page.fill('#firstName', data.firstName);
-
         await this.page.fill('#lastName', data.lastName);
-
         await this.page.fill('#userEmail', data.email);
-
         await this.page.click(`label:has-text("${data.gender}")`);
-
         await this.page.fill('#userNumber', data.mobile);
-
         await this.page.fill('#dateOfBirthInput', data.dob);
-
         await this.page.click('#dateOfBirthInput'); 
 
         for (const subject of data.subjects) {
@@ -68,7 +63,9 @@ export class FormPage {
 
         await this.page.fill('#currentAddress', data.address);
 
-        await this.page.setInputFiles('#uploadPicture', data.picturePath);
+        const absolutePath = path.resolve(data.picturePath);
+    
+        await this.page.setInputFiles('#uploadPicture', absolutePath);
 
         // --- SECCIÓN DE ESTADO ---
         const stateContainer = this.page.locator('#state');
@@ -120,7 +117,7 @@ export class FormPage {
             await expect(rows).toContainText(hobby);
         }
     
-        await expect(rows).toContainText(expectedData.picturePath.split('\\').pop() ?? '');
+        await expect(rows).toContainText(path.basename(expectedData.picturePath));
         await expect(rows).toContainText(expectedData.address);
         await expect(rows).toContainText(expectedData.state);
         await expect(rows).toContainText(expectedData.city);

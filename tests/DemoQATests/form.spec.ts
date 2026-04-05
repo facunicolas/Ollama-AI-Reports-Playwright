@@ -1,7 +1,5 @@
 import { test, expect } from '../../utils/test-base';
 import { createRandomUser } from '../../utils/DataFactory';
-import { FormData } from '../../pages/DemoQAPages/form.page';
-import path from 'path/win32';
 
 test.beforeEach(async ({ formPage }) => {
     await formPage.navigate();

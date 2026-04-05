@@ -1,10 +1,11 @@
 import { Locator, Page } from "@playwright/test";
-import fs from 'fs'
 
 export class UploadDownloadPage {
+
     private readonly downloadButtonPrivate: Locator;
     private readonly uploadInputPrivate: Locator;
     private readonly uploadedFilePathPrivate: Locator;
+
     constructor(private readonly page: Page) {
         this.downloadButtonPrivate = page.locator('#downloadButton');
         this.uploadInputPrivate = page.locator('#uploadFile');

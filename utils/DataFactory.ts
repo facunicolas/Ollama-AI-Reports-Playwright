@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 import { FormData } from '../pages/DemoQAPages/form.page';
-import path from 'path/win32';
+import path from 'path';
 
 export const createRandomUser = (): FormData => {
     const randomDate = faker.date.birthdate({ min: 18, max: 50, mode: 'age' });

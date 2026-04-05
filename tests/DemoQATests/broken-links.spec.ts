@@ -5,7 +5,7 @@ test.beforeEach(async ({ brokenLinksPage }) => {
 });
 
 
-test('Verificar que la imagen ESTA rota', async ({ page, brokenLinksPage }) => {
+test('Verificar que la imagen este rota', async ({ page, brokenLinksPage }) => {
    
     const isImageBroken = await brokenLinksPage.isImageBroken(brokenLinksPage.brokenImage);
 
